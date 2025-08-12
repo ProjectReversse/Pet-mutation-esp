@@ -1,6 +1,6 @@
 -- ========================================
--- Pro Gamer PET MUTATION RANDOMIZER - VERSÃO COMPLETA
--- Youtube: @wistdojo2371
+-- Pro Gamer PET MUTATION RANDOMIZER - VERSÃƒO COMPLETA
+-- Criado por: @wistdojo2371
 -- TikTok: @phantomzisreal 
 -- Estilo: Interface Elegante Azul
 -- ========================================
@@ -14,7 +14,7 @@ local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 -- ========================================
--- CONFIGURAÇÕES GLOBAIS
+-- CONFIGURAÃ‡Ã•ES GLOBAIS
 -- ========================================
 local CONFIG = {
     LOADING_TIME = 10, -- Alterado para 100 segundos
@@ -31,7 +31,7 @@ local CONFIG = {
     IMAGE_ID = "rbxassetid://79222138683693"
 }
 
--- Mutações corretas do Grow a Garden
+-- MutaÃ§Ãµes corretas do Grow a Garden
 local mutations = {
     "Shiny", "Inverted", "Frozen", "Windy", "Golden", "Mega", 
     "Tiny", "IronSkin", "Radiante", "Rainbow", "Shocked", "Ascended"
@@ -46,7 +46,7 @@ local isRerolling = false
 -- PARTE 1: TELA DE LOADING (ORIGINAL)
 -- ========================================
 local function createLoadingScreen()
-    -- Evita o zoom do usuário (PC e Mobile)
+    -- Evita o zoom do usuÃ¡rio (PC e Mobile)
     pcall(function()
         player.CameraMaxZoomDistance = 14
         player.CameraMinZoomDistance = 14
@@ -85,7 +85,7 @@ local function createLoadingScreen()
     local topText = Instance.new("TextLabel")
     topText.Size = UDim2.new(1, 0, 0.25, 0)
     topText.Position = UDim2.new(0, 0, 0, 0)
-    topText.Text = "🧬 Pet Mutation Randomizer"
+    topText.Text = "ðŸ§¬ Pet Mutation Randomizer"
     topText.Font = Enum.Font.Gotham
     topText.TextSize = 26
     topText.TextColor3 = Color3.fromRGB(200, 220, 255)
@@ -100,7 +100,7 @@ local function createLoadingScreen()
     local bottomText = Instance.new("TextLabel")
     bottomText.Size = UDim2.new(1, 0, 0.25, 0)
     bottomText.Position = UDim2.new(0, 0, 0.75, 0)
-    bottomText.Text = "⚡ Loading Mutation System..."
+    bottomText.Text = "âš¡ Loading Mutation System..."
     bottomText.Font = Enum.Font.Gotham
     bottomText.TextSize = 24
     bottomText.TextColor3 = Color3.fromRGB(180, 200, 255)
@@ -134,7 +134,7 @@ local function createLoadingScreen()
     fillCorner.CornerRadius = UDim.new(1, 0)
     fillCorner.Parent = fillBar
 
-    -- Degradê da barra
+    -- DegradÃª da barra
     local gradient = Instance.new("UIGradient")
     gradient.Color = ColorSequence.new{
         ColorSequenceKeypoint.new(0, Color3.fromRGB(100, 180, 255)),
@@ -143,7 +143,7 @@ local function createLoadingScreen()
     gradient.Rotation = 0
     gradient.Parent = fillBar
 
-    -- Animação de entrada
+    -- AnimaÃ§Ã£o de entrada
     container.Size = UDim2.new(0, 100, 0, 30)
     TweenService:Create(container, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
         Size = UDim2.new(0, 600, 0, 200)
@@ -151,14 +151,14 @@ local function createLoadingScreen()
 
     task.wait(1)
 
-    -- Animação da barra de progresso
+    -- AnimaÃ§Ã£o da barra de progresso
     TweenService:Create(fillBar, TweenInfo.new(CONFIG.LOADING_TIME, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
         Size = UDim2.new(1, 0, 1, 0)
     }):Play()
 
     task.wait(CONFIG.LOADING_TIME)
 
-    -- Animação de saída
+    -- AnimaÃ§Ã£o de saÃ­da
     TweenService:Create(container, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
         Size = UDim2.new(0, 100, 0, 30)
     }):Play()
@@ -169,7 +169,7 @@ local function createLoadingScreen()
 end
 
 -- ========================================
--- FUNÇÕES DE MUTAÇÃO
+-- FUNÃ‡Ã•ES DE MUTAÃ‡ÃƒO
 -- ========================================
 local function findMutationMachine()
     for _, obj in pairs(Workspace:GetDescendants()) do
@@ -183,12 +183,12 @@ local function findMutationMachine()
     return nil, nil
 end
 
--- SISTEMA DE REROLL REAL - Passa por várias mutações
+-- SISTEMA DE REROLL REAL - Passa por vÃ¡rias mutaÃ§Ãµes
 local function rerollMutation(displayLabel)
     if isRerolling then return end
     isRerolling = true
     
-    local rerollCount = math.random(8, 15) -- Número de mutações que vai passar
+    local rerollCount = math.random(8, 15) -- NÃºmero de mutaÃ§Ãµes que vai passar
     
     spawn(function()
         for i = 1, rerollCount do
@@ -200,7 +200,7 @@ local function rerollMutation(displayLabel)
                     if child.Name == "MutationESP" then
                         local espLabel = child:FindFirstChild("Frame"):FindFirstChild("TextLabel")
                         if espLabel then
-                            espLabel.Text = "🎲 " .. tempMutation
+                            espLabel.Text = "ðŸŽ² " .. tempMutation
                             espLabel.TextColor3 = Color3.fromRGB(255, 200, 100)
                         end
                     end
@@ -212,16 +212,16 @@ local function rerollMutation(displayLabel)
             task.wait(speed)
         end
         
-        -- Mutação final
+        -- MutaÃ§Ã£o final
         currentMutation = mutations[math.random(#mutations)]
         
-        -- Atualizar ESP com mutação final
+        -- Atualizar ESP com mutaÃ§Ã£o final
         if ballPart then
             for _, child in ipairs(ballPart:GetChildren()) do
                 if child.Name == "MutationESP" then
                     local espLabel = child:FindFirstChild("Frame"):FindFirstChild("TextLabel")
                     if espLabel then
-                        espLabel.Text = "🧬 " .. currentMutation
+                        espLabel.Text = "ðŸ§¬ " .. currentMutation
                         espLabel.TextColor3 = Color3.new(1, 1, 1)
                     end
                 end
@@ -246,11 +246,11 @@ local function createESPEffect()
     
     if not espVisible then return end
     
-    -- Criar novo ESP POSICIONADO BEM NA FRENTE DA MÁQUINA
+    -- Criar novo ESP POSICIONADO BEM NA FRENTE DA MÃQUINA
     local espGui = Instance.new("BillboardGui")
     espGui.Name = "MutationESP"
     espGui.Size = UDim2.new(0, 220, 0, 60)
-    -- Posição bem à frente da máquina para não ficar atrás de paredes
+    -- PosiÃ§Ã£o bem Ã  frente da mÃ¡quina para nÃ£o ficar atrÃ¡s de paredes
     espGui.StudsOffset = Vector3.new(0, 6, -5) -- Bem mais para frente e mais alto
     espGui.AlwaysOnTop = true -- Garante que sempre fique na frente
     espGui.Parent = ballPart
@@ -265,11 +265,11 @@ local function createESPEffect()
     espCorner.CornerRadius = UDim.new(0, 10)
     espCorner.Parent = espFrame
     
-    -- Borda mais visível
+    -- Borda mais visÃ­vel
     local espStroke = Instance.new("UIStroke")
     espStroke.Thickness = 3
     espStroke.Color = Color3.fromRGB(255, 255, 255)
-    espStroke.Transparency = 0.2 -- Borda bem visível
+    espStroke.Transparency = 0.2 -- Borda bem visÃ­vel
     espStroke.Parent = espFrame
     
     -- Sombra para destacar mais
@@ -282,16 +282,16 @@ local function createESPEffect()
     
     local espLabel = Instance.new("TextLabel")
     espLabel.Size = UDim2.new(1, 0, 1, 0)
-    espLabel.Text = "🧬 " .. currentMutation
+    espLabel.Text = "ðŸ§¬ " .. currentMutation
     espLabel.TextColor3 = Color3.new(1, 1, 1)
     espLabel.TextStrokeTransparency = 0
     espLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
     espLabel.BackgroundTransparency = 1
     espLabel.Font = Enum.Font.GothamBold
-    espLabel.TextSize = 18 -- Texto maior para melhor visualização
+    espLabel.TextSize = 18 -- Texto maior para melhor visualizaÃ§Ã£o
     espLabel.Parent = espFrame
     
-    -- Animação pulsante mais suave e menos transparente
+    -- AnimaÃ§Ã£o pulsante mais suave e menos transparente
     local pulseInfo = TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true)
     TweenService:Create(espFrame, pulseInfo, {BackgroundTransparency = 0.15}):Play()
     TweenService:Create(espStroke, pulseInfo, {Transparency = 0.4}):Play()
@@ -326,7 +326,7 @@ local function createMinimizedOrb(mainGui, showMainInterface)
     orbImage.Active = false
     orbImage.Parent = orbFrame
 
-    -- Texto da mutação atual na bolinha
+    -- Texto da mutaÃ§Ã£o atual na bolinha
     local orbText = Instance.new("TextLabel")
     orbText.Size = UDim2.new(1, 0, 0.3, 0)
     orbText.Position = UDim2.new(0, 0, 0.85, 0)
@@ -359,7 +359,7 @@ local function createMinimizedOrb(mainGui, showMainInterface)
         end
     end
 
-    -- Input começou
+    -- Input comeÃ§ou
     orbFrame.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragToggle = true
@@ -378,13 +378,13 @@ local function createMinimizedOrb(mainGui, showMainInterface)
     -- Input terminou
     orbFrame.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            print("🖱️ Clique detectado na bolinha")
+            print("ðŸ–±ï¸ Clique detectado na bolinha")
             if dragToggle and not hasMoved then
-                -- Se não moveu, considera como clique - abre a interface
-                print("🔮 Clique válido - abrindo interface...")
+                -- Se nÃ£o moveu, considera como clique - abre a interface
+                print("ðŸ”® Clique vÃ¡lido - abrindo interface...")
                 showMainInterface()
             elseif hasMoved then
-                print("📱 Bolinha foi arrastada")
+                print("ðŸ“± Bolinha foi arrastada")
             end
             dragToggle = false
             hasMoved = false
@@ -419,7 +419,7 @@ local function createMinimizedOrb(mainGui, showMainInterface)
         }):Play()
     end)
 
-    -- Sistema de clique alternativo (backup) - funciona como um botão normal
+    -- Sistema de clique alternativo (backup) - funciona como um botÃ£o normal
     local orbButton = Instance.new("TextButton")
     orbButton.Size = UDim2.new(1, 0, 1, 0)
     orbButton.Position = UDim2.new(0, 0, 0, 0)
@@ -430,7 +430,7 @@ local function createMinimizedOrb(mainGui, showMainInterface)
     orbButton.Parent = orbFrame
 
     orbButton.MouseButton1Click:Connect(function()
-        print("🔥 Clique alternativo detectado!")
+        print("ðŸ”¥ Clique alternativo detectado!")
         showMainInterface()
     end)
 
@@ -441,10 +441,10 @@ end
 -- INTERFACE PRINCIPAL (SIMPLIFICADA)
 -- ========================================
 local function createMutationInterface()
-    -- Localizar máquina de mutação
+    -- Localizar mÃ¡quina de mutaÃ§Ã£o
     machine, ballPart = findMutationMachine()
     if not machine then
-        warn("⚠️ Pet Mutation Machine não encontrada!")
+        warn("âš ï¸ Pet Mutation Machine nÃ£o encontrada!")
     end
 
     -- Criar ScreenGui principal
@@ -475,7 +475,7 @@ local function createMutationInterface()
     mainShadow.Transparency = 0.3
     mainShadow.Parent = mainFrame
 
-    -- Cabeçalho
+    -- CabeÃ§alho
     local header = Instance.new("Frame")
     header.Size = UDim2.new(1, 0, 0, 60)
     header.Position = UDim2.new(0, 0, 0, 0)
@@ -496,11 +496,11 @@ local function createMutationInterface()
     headerGradient.Rotation = 45
     headerGradient.Parent = header
 
-    -- Título principal
+    -- TÃ­tulo principal
     local titleLabel = Instance.new("TextLabel")
     titleLabel.Size = UDim2.new(0.8, 0, 0.7, 0)
     titleLabel.Position = UDim2.new(0.1, 0, 0, 0)
-    titleLabel.Text = "🧬 PET MUTATION RANDOMIZER"
+    titleLabel.Text = "ðŸ§¬ PET MUTATION RANDOMIZER"
     titleLabel.Font = Enum.Font.GothamBold
     titleLabel.TextSize = 16
     titleLabel.TextColor3 = Color3.new(1, 1, 1)
@@ -511,11 +511,11 @@ local function createMutationInterface()
     titleLabel.Active = false
     titleLabel.Parent = header
 
-    -- Subtítulo
+    -- SubtÃ­tulo
     local authorLabel = Instance.new("TextLabel")
     authorLabel.Size = UDim2.new(1, 0, 0.3, 0)
     authorLabel.Position = UDim2.new(0, 0, 0.7, 0)
-    authorLabel.Text = "Made by Mkz | TikTok: mkz.theplayer"
+    authorLabel.Text = "Made by @wistdojo237 | TikTok: @phantomzisreal"
     authorLabel.Font = Enum.Font.Gotham
     authorLabel.TextSize = 10
     authorLabel.TextColor3 = Color3.fromRGB(180, 180, 220)
@@ -524,11 +524,11 @@ local function createMutationInterface()
     authorLabel.Active = false
     authorLabel.Parent = header
 
-    -- Botão de fechar (X)
+    -- BotÃ£o de fechar (X)
     local closeButton = Instance.new("TextButton")
     closeButton.Size = UDim2.new(0, 30, 0, 30)
     closeButton.Position = UDim2.new(1, -35, 0, 5)
-    closeButton.Text = "×"
+    closeButton.Text = "Ã—"
     closeButton.Font = Enum.Font.GothamBold
     closeButton.TextSize = 20
     closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -542,7 +542,7 @@ local function createMutationInterface()
     closeCorner.CornerRadius = UDim.new(1, 0)
     closeCorner.Parent = closeButton
 
-    -- Sistema de movimento - só no header
+    -- Sistema de movimento - sÃ³ no header
     local dragToggle = nil
     local dragStart = nil
     local startPos = nil
@@ -584,7 +584,7 @@ local function createMutationInterface()
     end)
 
     -- ========================================
-    -- BOTÕES DE AÇÃO (SEM SEÇÃO DE STATUS)
+    -- BOTÃ•ES DE AÃ‡ÃƒO (SEM SEÃ‡ÃƒO DE STATUS)
     -- ========================================
     local function createActionButton(text, position, color, icon)
         local button = Instance.new("TextButton")
@@ -618,78 +618,78 @@ local function createMutationInterface()
         return button
     end
 
-    -- Botão Reroll Mutation
+    -- BotÃ£o Reroll Mutation
     local rerollButton = createActionButton(
         "REROLL MUTATION",
         UDim2.new(0.05, 0, 0, 80),
         Color3.fromRGB(100, 180, 255),
-        "🎲"
+        "ðŸŽ²"
     )
 
-    -- Botão Toggle ESP
+    -- BotÃ£o Toggle ESP
     local toggleButton = createActionButton(
         espVisible and "DISABLE ESP" or "ENABLE ESP",
         UDim2.new(0.05, 0, 0, 140),
         espVisible and Color3.fromRGB(255, 150, 100) or CONFIG.COLORS.SUCCESS,
-        espVisible and "👁️" or "👀"
+        espVisible and "ðŸ‘ï¸" or "ðŸ‘€"
     )
 
-    -- Botão Find Machine
+    -- BotÃ£o Find Machine
     local findButton = createActionButton(
         "FIND MACHINE",
         UDim2.new(0.05, 0, 0, 200),
         Color3.fromRGB(150, 100, 255),
-        "🔍"
+        "ðŸ”"
     )
 
     -- Criar bolinha minimizada
     local orbFrame, orbText = createMinimizedOrb(mainGui, function()
-        print("🔮 Tentando abrir interface...")
+        print("ðŸ”® Tentando abrir interface...")
         mainFrame.Visible = true
         orbFrame.Visible = false
-        print("✅ Interface aberta!")
+        print("âœ… Interface aberta!")
     end)
     orbFrame.Visible = false
 
     -- ========================================
-    -- FUNCIONALIDADES DOS BOTÕES
+    -- FUNCIONALIDADES DOS BOTÃ•ES
     -- ========================================
     rerollButton.MouseButton1Click:Connect(function()
         if not isRerolling then
-            print("🎲 Iniciando reroll...")
+            print("ðŸŽ² Iniciando reroll...")
             rerollMutation()
             task.wait(2) -- Aguarda o reroll terminar
             createESPEffect()
             orbText.Text = currentMutation
-            print("🎲 Nova mutação: " .. currentMutation)
+            print("ðŸŽ² Nova mutaÃ§Ã£o: " .. currentMutation)
         else
-            print("⚠️ Reroll já em andamento!")
+            print("âš ï¸ Reroll jÃ¡ em andamento!")
         end
     end)
 
     toggleButton.MouseButton1Click:Connect(function()
         espVisible = not espVisible
-        toggleButton.Text = (espVisible and "👁️ DISABLE ESP" or "👀 ENABLE ESP")
+        toggleButton.Text = (espVisible and "ðŸ‘ï¸ DISABLE ESP" or "ðŸ‘€ ENABLE ESP")
         toggleButton.BackgroundColor3 = espVisible and Color3.fromRGB(255, 150, 100) or CONFIG.COLORS.SUCCESS
         
         createESPEffect()
-        print(espVisible and "👁️ ESP ativado" or "👀 ESP desativado")
+        print(espVisible and "ðŸ‘ï¸ ESP ativado" or "ðŸ‘€ ESP desativado")
     end)
 
     findButton.MouseButton1Click:Connect(function()
         machine, ballPart = findMutationMachine()
         if machine then
-            print("🔍 Máquina de mutação encontrada!")
+            print("ðŸ” MÃ¡quina de mutaÃ§Ã£o encontrada!")
             createESPEffect()
             
             local originalText = findButton.Text
-            findButton.Text = "✅ MACHINE FOUND"
+            findButton.Text = "âœ… MACHINE FOUND"
             task.wait(1.5)
             findButton.Text = originalText
         else
-            print("❌ Máquina de mutação não encontrada!")
+            print("âŒ MÃ¡quina de mutaÃ§Ã£o nÃ£o encontrada!")
             local originalText = findButton.Text
-            findButton.Text = "❌ NOT FOUND"
+            findButton.Text = "âŒ NOT FOUND"
             task.wait(1.5)
             findButton.Text = originalText
         end
@@ -697,20 +697,20 @@ local function createMutationInterface()
 
     -- Fechar interface e mostrar bolinha
     closeButton.MouseButton1Click:Connect(function()
-        print("❌ Fechando interface...")
+        print("âŒ Fechando interface...")
         mainFrame.Visible = false
         orbFrame.Visible = true
-        print("🔮 Bolinha ativada!")
+        print("ðŸ”® Bolinha ativada!")
     end)
 
-    -- Criar ESP inicial se máquina foi encontrada
+    -- Criar ESP inicial se mÃ¡quina foi encontrada
     if machine and ballPart then
         createESPEffect()
     end
 end
 
 -- ========================================
--- INICIALIZAÇÃO
+-- INICIALIZAÃ‡ÃƒO
 -- ========================================
 local function main()
     createLoadingScreen()
